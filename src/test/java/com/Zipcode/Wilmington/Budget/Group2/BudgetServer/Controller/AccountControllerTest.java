@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.xml.ws.Response;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,7 +35,7 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void testCreate(){
+    public void testCreate() {
         HttpStatus expected = HttpStatus.CREATED;
         Account expectedAccount = new Account();
         BDDMockito
@@ -92,6 +93,29 @@ public class AccountControllerTest {
     }
 
     @Test
+    public void testGetNumberOfAccounts() {
+        HttpStatus expected = HttpStatus.OK;
+        Account account = new Account(1, 100.00);
+        Account account1 = new Account(1, 200.00);
+        Set<Account> expectedAccountList = new HashSet<>();
+        expectedAccountList.add(account);
+        expectedAccountList.add(account1);
+        Integer expectedNumberOfAccounts = expectedAccountList.size();
+        BDDMockito
+                .given(service.getNumberOfAccounts(1))
+                .willReturn(expectedNumberOfAccounts);
+
+        //When
+        ResponseEntity<Integer> response = controller.getNumberOfAccounts(1);
+        HttpStatus actual = response.getStatusCode();
+        Integer actualAccountList = response.getBody();
+
+        //Then
+        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(expectedNumberOfAccounts, actualAccountList);
+    }
+
+    @Test
     public void testUpdate() {
         HttpStatus expected = HttpStatus.OK;
         Account newAccount = new Account(1, 5.0);
@@ -122,7 +146,6 @@ public class AccountControllerTest {
                 .willReturn(withdrawnAccount);
 
 
-
         //When
         ResponseEntity<Account> response = controller.withdraw(1, 5.0);
         HttpStatus actual = response.getStatusCode();
@@ -138,14 +161,14 @@ public class AccountControllerTest {
         HttpStatus expected = HttpStatus.OK;
         Account depositAccount = new Account(1, 5.0);
         BDDMockito
-                .given(service.deposit(1 ,5.0))
+                .given(service.deposit(1, 5.0))
                 .willReturn(depositAccount);
 
         BDDMockito
                 .given(service.getAccount(1))
                 .willReturn(depositAccount);
         //When
-        ResponseEntity<Account> response = controller.deposit(1,5.0);
+        ResponseEntity<Account> response = controller.deposit(1, 5.0);
         HttpStatus actual = response.getStatusCode();
         Account actualAccount = response.getBody();
 
@@ -187,5 +210,28 @@ public class AccountControllerTest {
 
         Assert.assertEquals(expected, actual);
         Assert.assertEquals(true, actualBool);
+    }
+
+    @Test
+    public void testDeleteAll() {
+        // Given
+        HttpStatus expected = HttpStatus.OK;
+        Account account = new Account(1, 420.69);
+        Account account1 = new Account(2, 1337.00);
+        Set<Account> expectedAccounts = new HashSet<>();
+        expectedAccounts.add(account);
+        expectedAccounts.add(account1);
+        BDDMockito
+                .given(service.deleteAllAccounts())
+                .willReturn(true);
+
+        // When
+        ResponseEntity<Boolean> response = controller.deleteAllAccounts();
+        HttpStatus actual = response.getStatusCode();
+        Boolean actualBoolean = response.getBody();
+
+        // Then
+        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(true, actualBoolean);
     }
 }
