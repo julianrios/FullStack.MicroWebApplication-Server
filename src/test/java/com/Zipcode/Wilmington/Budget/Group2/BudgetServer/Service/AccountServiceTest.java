@@ -80,6 +80,17 @@ public class AccountServiceTest {
     }
 
     @Test
+    public void testGetNumberOfAccounts() {
+        Account account = new Account(1, 100.00);
+        Account account1 = new Account(2, 200.00);
+
+        service.getNumberOfAccounts(1);
+
+        Mockito.verify(repo, Mockito.times(1)).countByProfileID(1);
+
+    }
+
+    @Test
     public void testUpdateAccount() {
         Account account = new Account(1, 10.00);
         Account account2 = new Account(1, 100.00);
@@ -133,6 +144,18 @@ public class AccountServiceTest {
 
         Mockito.verify(repo, Mockito.times(0)).findById(1);
         Assert.assertNull(actual);
+    }
+
+    @Test
+    public void testDeleteAllProfiles() {
+        Account account = new Account(1, 420.69);
+        Account account1 = new Account(2, 1337.00);
+        Set<Account> expectedAccounts = new HashSet<>();
+        expectedAccounts.add(account);
+        expectedAccounts.add(account1);
+
+        service.deleteAllAccounts();
+        Mockito.verify(repo, Mockito.times(1)).deleteAll();
     }
 
 }

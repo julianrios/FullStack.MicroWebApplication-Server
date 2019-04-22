@@ -34,6 +34,10 @@ public class AccountService {
 
     }
 
+    public Integer getNumberOfAccounts(Integer profile_id){
+        return accountRepo.countByProfileID(profile_id);
+    }
+
     public Account update(Integer accountID,Account newAccountData) {
         Account account = accountRepo.findById(accountID).get();
         account.setBalance(newAccountData.getBalance());
@@ -75,5 +79,8 @@ public class AccountService {
         return true;
     }
 
-
+    public Boolean deleteAllAccounts() {
+        accountRepo.deleteAll();
+        return true;
+    }
 }
