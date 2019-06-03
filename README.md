@@ -1,6 +1,22 @@
-# Micro Web Application - Server
-* **Objective** - to create an implementation of a small web service
-* **Purpose** - to demonstrate the construction of a full-stacked web-application
+# Moneythyme
+<table>
+<tr>
+<td>
+Java app that tracks users’ spending and
+manages finances.
+</td>
+</tr>
+</table>
+
+## Demo
+Go here for a live demo : https://moneythymespringboot.herokuapp.com/
+
+## Tests
+- [Postman](https://www.getpostman.com)
+Using the application PostMan you can run the tests for the profile with this link.
+[Collection Link](https://www.getpostman.com/collections/2ff56c654442ce0ab868)
+![Run Collection](/MoneyThyme-Server/assets/gif/postman-tests-walk-thru.gif)
+
 
 ## Developmental Notes
 ### Minimum Tech Stack
