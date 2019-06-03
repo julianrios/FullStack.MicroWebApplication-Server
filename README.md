@@ -1,9 +1,8 @@
-# Moneythyme
+# MoneyThyme
 <table>
 <tr>
 <td>
-Java app that tracks users’ spending and
-manages finances.
+Server for Java app that tracks users’ spending and manages finances.
 </td>
 </tr>
 </table>
@@ -13,9 +12,9 @@ Go here for a live demo : https://moneythymespringboot.herokuapp.com/
 
 ## Tests
 - [Postman](https://www.getpostman.com)
-Using the application PostMan you can run the tests for the profile with this link.
-[Collection Link](https://www.getpostman.com/collections/2ff56c654442ce0ab868)
-![Run Collection](/MoneyThyme-Server/assets/gif/postman-tests-walk-thru.gif)
+Using the application PostMan you can run the tests for the profile with the link below.
+- [Collection Link](https://www.getpostman.com/collections/2ff56c654442ce0ab868)
+![Walk Through](https://media.giphy.com/media/If1NJy3iw28xlUjYts/giphy.gif)
 
 
 ## Developmental Notes
