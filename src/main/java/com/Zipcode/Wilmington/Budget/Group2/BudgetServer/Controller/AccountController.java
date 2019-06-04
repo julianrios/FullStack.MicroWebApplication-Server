@@ -42,9 +42,9 @@ public class AccountController {
     }
 
     /**
-     * Accepts a URI and returns the account at the URI
+     * Accepts a URI and returns the account at the URI with a HTTP status code of 200(OK).
      * @param accountId accountId that is required for the URI to reach a specific account path.
-     * @return This returns an account.
+     * @return This returns an account and HTTP status OK.
      */
     @GetMapping("/accounts/{accountId}")
     public ResponseEntity<Account> read(@PathVariable Integer accountId) {
@@ -52,8 +52,9 @@ public class AccountController {
     }
 
     /**
+     * Returns a collection of accounts for a given userId with a HTTP status code of 200(OK).
      * @param userId userId that is required for the URI to reach a specific account path.
-     * @return This returns a set of accounts for a specified userId.
+     * @return This returns a set of accounts for a specified userId and HTTP status OK..
      */
     @GetMapping("profiles/accounts/{userId}")
     public ResponseEntity<Set<Account>> getAccounts(@PathVariable Integer userId) {
@@ -61,9 +62,9 @@ public class AccountController {
     }
 
     /**
-     * Returns an integer representing the number of accounts that userId has.
-     * @param userId that is required for the URI to reach a specific account path.
-     * @return This returns an integer.
+     * Returns an integer representing the number of accounts that userId has with a HTTP status code of 200(OK).
+     * @param userId userId that is required for the URI to reach a specific account path.
+     * @return This returns an integer and HTTP status OK..
      */
     @GetMapping("profiles/numberOfAccounts/{userId}")
     public ResponseEntity<Integer> getNumberOfAccounts(@PathVariable Integer userId) {
@@ -71,21 +72,33 @@ public class AccountController {
     }
 
     /**
-     * @param accountId
-     * @param account
-     * @return
+     * Returns the updated account with a HTTP status code of 200(OK).
+     * @param accountId userId that is required for the URI to reach a specific account path.
+     * @param account account information that is required in order to update an account.
+     * @return This returns an account and HTTP status OK.
      */
     @PutMapping("/accounts/{accountId}")
     public ResponseEntity<Account> update(@PathVariable Integer accountId, @RequestBody Account account) {
         return new ResponseEntity<>(accountService.update(accountId, account), HttpStatus.OK);
     }
 
+    /**
+     * Withdraws the specified amount and returns the updated account with a HTTP status code of 200(OK).
+     * @param accountId userId that is required for the URI to reach a specific account path.
+     * @param amount amount to withdraw
+     * @return This returns an account and HTTP status OK.
+     */
     @PutMapping("/accounts/withdraw/{accountId}/{amount}")
     public ResponseEntity<Account> withdraw(@PathVariable Integer accountId, @PathVariable Double amount) {
         accountService.withdraw(accountId, amount);
         return new ResponseEntity<>(accountService.getAccount(accountId), HttpStatus.OK);
     }
 
+    /**
+     * @param accountId
+     * @param amount
+     * @return
+     */
     @PutMapping("/accounts/deposit/{accountId}/{amount}")
     public ResponseEntity<Account> deposit(@PathVariable Integer accountId, @PathVariable Double amount) {
         accountService.deposit(accountId, amount);

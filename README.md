@@ -31,7 +31,7 @@ Using the application PostMan you can run the tests for the profile with the lin
 	* deposit money to each account
 	* withdrawl money from each account
 	* transfer money to and from any 2 accounts
-
+    * give my account names
 
 ### Installation
 * Install [NodeJs](https://nodejs.org/en/). From terminal execute
