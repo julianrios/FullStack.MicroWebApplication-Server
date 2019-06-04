@@ -16,7 +16,8 @@ Go here for a live demo : https://moneythymespringboot.herokuapp.com/
 - [Postman](https://www.getpostman.com)
 Using the application PostMan you can run the tests for the profile with the link below.
 - [Collection Link - Profiles](https://www.getpostman.com/collections/fbdd6d1290a82d3ca6c9)
-- [Collection Link - Accounts]()
+- [Collection Link - Accounts](https://www.getpostman.com/collections/301b06397805b594ac9c)
+
 ![Walk Through](https://media.giphy.com/media/If1NJy3iw28xlUjYts/giphy.gif)
 
 ### Tech Stack
