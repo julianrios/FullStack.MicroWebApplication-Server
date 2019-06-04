@@ -9,38 +9,72 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
+/**
+ * This controller handles the flow of data between the client and the server.
+ * For incoming requests about information.
+ */
+
 @RestController
 @CrossOrigin("*")
 public class AccountController {
 
     private AccountService accountService;
 
+    /**
+     * Constructs an account controller and injects an account service into it.
+     * @param accountService an accountService.
+     */
     @Autowired
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
     }
 
+    /**
+     * Creates an account, returns the created account, and an HTTP status code of 201(CREATED).
+     *
+     * @param account account information that is required in order to generate an account.
+     * @return This returns an account and HTTP status created.
+     */
     @PostMapping("/accounts")
     public ResponseEntity<Account> create(@RequestBody Account account) {
 
         return new ResponseEntity<>(accountService.create(account), HttpStatus.CREATED);
     }
 
+    /**
+     * Accepts a URI and returns the account at the URI
+     * @param accountId accountId that is required for the URI to reach a specific account path.
+     * @return This returns an account.
+     */
     @GetMapping("/accounts/{accountId}")
     public ResponseEntity<Account> read(@PathVariable Integer accountId) {
         return new ResponseEntity<>(accountService.getAccount(accountId), HttpStatus.OK);
     }
 
+    /**
+     * @param userId userId that is required for the URI to reach a specific account path.
+     * @return This returns a set of accounts for a specified userId.
+     */
     @GetMapping("profiles/accounts/{userId}")
     public ResponseEntity<Set<Account>> getAccounts(@PathVariable Integer userId) {
         return new ResponseEntity<>(accountService.getAccounts(userId), HttpStatus.OK);
     }
 
+    /**
+     * Returns an integer representing the number of accounts that userId has.
+     * @param userId that is required for the URI to reach a specific account path.
+     * @return This returns an integer.
+     */
     @GetMapping("profiles/numberOfAccounts/{userId}")
     public ResponseEntity<Integer> getNumberOfAccounts(@PathVariable Integer userId) {
         return new ResponseEntity<>(accountService.getNumberOfAccounts(userId), HttpStatus.OK);
     }
 
+    /**
+     * @param accountId
+     * @param account
+     * @return
+     */
     @PutMapping("/accounts/{accountId}")
     public ResponseEntity<Account> update(@PathVariable Integer accountId, @RequestBody Account account) {
         return new ResponseEntity<>(accountService.update(accountId, account), HttpStatus.OK);

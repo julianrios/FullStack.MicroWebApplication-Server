@@ -7,6 +7,7 @@ Server for Java app that tracks users’ spending and manages finances.
 </tr>
 </table>
 <hr>
+
 ## Demo
 Go here for a live demo : https://moneythymespringboot.herokuapp.com/
 
@@ -14,7 +15,7 @@ Go here for a live demo : https://moneythymespringboot.herokuapp.com/
 ### Tests
 - [Postman](https://www.getpostman.com)
 Using the application PostMan you can run the tests for the profile with the link below.
-- [Collection Link - Profiles](https://www.getpostman.com/collections/2ff56c654442ce0ab868)
+- [Collection Link - Profiles](https://www.getpostman.com/collections/fbdd6d1290a82d3ca6c9)
 - [Collection Link - Accounts]()
 ![Walk Through](https://media.giphy.com/media/If1NJy3iw28xlUjYts/giphy.gif)
 
