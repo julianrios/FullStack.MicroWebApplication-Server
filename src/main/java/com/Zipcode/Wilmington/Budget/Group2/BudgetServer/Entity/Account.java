@@ -3,9 +3,7 @@ package com.Zipcode.Wilmington.Budget.Group2.BudgetServer.Entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.constraints.NotNull;
-import java.util.Objects;
 
 @Entity
 @Data

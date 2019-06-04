@@ -19,57 +19,58 @@ public class AccountController {
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
     }
+
     @PostMapping("/accounts")
-    public ResponseEntity<Account> create(@RequestBody Account account){
+    public ResponseEntity<Account> create(@RequestBody Account account) {
 
         return new ResponseEntity<>(accountService.create(account), HttpStatus.CREATED);
     }
 
     @GetMapping("/accounts/{accountId}")
-    public ResponseEntity<Account> read(@PathVariable Integer accountId){
-            return new ResponseEntity<>(accountService.getAccount(accountId),HttpStatus.OK);
+    public ResponseEntity<Account> read(@PathVariable Integer accountId) {
+        return new ResponseEntity<>(accountService.getAccount(accountId), HttpStatus.OK);
     }
 
     @GetMapping("profiles/accounts/{userId}")
-    public  ResponseEntity<Set<Account>> getAccounts(@PathVariable Integer userId){
-        return new ResponseEntity<>(accountService.getAccounts(userId),HttpStatus.OK);
+    public ResponseEntity<Set<Account>> getAccounts(@PathVariable Integer userId) {
+        return new ResponseEntity<>(accountService.getAccounts(userId), HttpStatus.OK);
     }
 
     @GetMapping("profiles/numberOfAccounts/{userId}")
-    public ResponseEntity<Integer> getNumberOfAccounts(@PathVariable Integer userId){
-        return new ResponseEntity<>(accountService.getNumberOfAccounts(userId),HttpStatus.OK);
+    public ResponseEntity<Integer> getNumberOfAccounts(@PathVariable Integer userId) {
+        return new ResponseEntity<>(accountService.getNumberOfAccounts(userId), HttpStatus.OK);
     }
 
     @PutMapping("/accounts/{accountId}")
-    public  ResponseEntity<Account> update(@PathVariable Integer accountId, @RequestBody Account account){
-            return new ResponseEntity<>(accountService.update(accountId, account), HttpStatus.OK);
+    public ResponseEntity<Account> update(@PathVariable Integer accountId, @RequestBody Account account) {
+        return new ResponseEntity<>(accountService.update(accountId, account), HttpStatus.OK);
     }
 
     @PutMapping("/accounts/withdraw/{accountId}/{amount}")
-    public ResponseEntity<Account> withdraw(@PathVariable Integer accountId,@PathVariable Double amount){
-        accountService.withdraw(accountId,amount);
-        return new ResponseEntity<>(accountService.getAccount(accountId),HttpStatus.OK);
+    public ResponseEntity<Account> withdraw(@PathVariable Integer accountId, @PathVariable Double amount) {
+        accountService.withdraw(accountId, amount);
+        return new ResponseEntity<>(accountService.getAccount(accountId), HttpStatus.OK);
     }
 
     @PutMapping("/accounts/deposit/{accountId}/{amount}")
-    public ResponseEntity<Account> deposit(@PathVariable Integer accountId,@PathVariable Double amount){
-        accountService.deposit(accountId,amount);
-        return new ResponseEntity<>(accountService.getAccount(accountId),HttpStatus.OK);
+    public ResponseEntity<Account> deposit(@PathVariable Integer accountId, @PathVariable Double amount) {
+        accountService.deposit(accountId, amount);
+        return new ResponseEntity<>(accountService.getAccount(accountId), HttpStatus.OK);
     }
 
     @PutMapping("/accounts/transfer/{account1Id}/{account2Id}/{amount}")
-    public ResponseEntity<Account[]> transfer(@PathVariable Integer account1Id, @PathVariable Integer account2Id, @PathVariable Double amount){
-        return new ResponseEntity<>(accountService.transfer(account1Id,account2Id,amount),HttpStatus.OK);
+    public ResponseEntity<Account[]> transfer(@PathVariable Integer account1Id, @PathVariable Integer account2Id, @PathVariable Double amount) {
+        return new ResponseEntity<>(accountService.transfer(account1Id, account2Id, amount), HttpStatus.OK);
 
     }
 
     @DeleteMapping("/accounts/{accountId}")
-    public ResponseEntity<Boolean> delete(@PathVariable Integer accountId){
-        return new ResponseEntity<>(accountService.delete(accountId),HttpStatus.OK);
+    public ResponseEntity<Boolean> delete(@PathVariable Integer accountId) {
+        return new ResponseEntity<>(accountService.delete(accountId), HttpStatus.OK);
     }
 
     @DeleteMapping("/accounts/")
     public ResponseEntity<Boolean> deleteAllAccounts() {
-        return new ResponseEntity<>(accountService.deleteAllAccounts(),HttpStatus.OK);
+        return new ResponseEntity<>(accountService.deleteAllAccounts(), HttpStatus.OK);
     }
 }

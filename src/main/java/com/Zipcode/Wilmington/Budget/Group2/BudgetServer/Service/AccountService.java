@@ -17,7 +17,7 @@ public class AccountService {
         this.accountRepo = accountRepo;
     }
 
-    public Account create(Account account){
+    public Account create(Account account) {
 
         return accountRepo.save(account);
     }
@@ -34,11 +34,11 @@ public class AccountService {
 
     }
 
-    public Integer getNumberOfAccounts(Integer profile_id){
+    public Integer getNumberOfAccounts(Integer profile_id) {
         return accountRepo.countByProfileID(profile_id);
     }
 
-    public Account update(Integer accountID,Account newAccountData) {
+    public Account update(Integer accountID, Account newAccountData) {
         Account account = accountRepo.findById(accountID).get();
         account.setBalance(newAccountData.getBalance());
         account.setProfileID(newAccountData.getProfileID());
@@ -48,7 +48,7 @@ public class AccountService {
 
     public Account withdraw(Integer accountID, Double amount) {
         Account account = accountRepo.findById(accountID).get();
-        if(amount > 0 && amount <= account.getBalance()) {
+        if (amount > 0 && amount <= account.getBalance()) {
             account.setBalance(account.getBalance() - amount);
         }
         return accountRepo.save(account);
@@ -56,25 +56,25 @@ public class AccountService {
 
     public Account deposit(Integer accountID, Double amount) {
         Account account = accountRepo.findById(accountID).get();
-        if(amount > 0){
+        if (amount > 0) {
             account.setBalance(account.getBalance() + amount);
         }
         return accountRepo.save(account);
     }
 
-    public Account[] transfer(Integer accountIdFrom, Integer accountIdTo, Double amount){
-        if(amount > 0 &&
+    public Account[] transfer(Integer accountIdFrom, Integer accountIdTo, Double amount) {
+        if (amount > 0 &&
                 accountRepo.findById(accountIdFrom).get().getProfileID()
-                        .equals(accountRepo.findById(accountIdTo).get().getProfileID())){
+                        .equals(accountRepo.findById(accountIdTo).get().getProfileID())) {
             Account[] accounts = new Account[2];
-        accounts[0] = withdraw(accountIdFrom,amount);
-        accounts[1] = deposit(accountIdTo,amount);
-        return accounts;
+            accounts[0] = withdraw(accountIdFrom, amount);
+            accounts[1] = deposit(accountIdTo, amount);
+            return accounts;
         }
         return null;
     }
 
-    public Boolean delete(Integer accountID){
+    public Boolean delete(Integer accountID) {
         accountRepo.deleteById(accountID);
         return true;
     }

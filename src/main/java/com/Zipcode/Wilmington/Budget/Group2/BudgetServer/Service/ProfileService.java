@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Service
@@ -19,11 +18,11 @@ public class ProfileService {
         this.profileRepo = profileRepo;
     }
 
-    public Profile create(Profile profile){
+    public Profile create(Profile profile) {
         return profileRepo.save(profile);
     }
 
-    public Profile getUser(Integer userID){
+    public Profile getUser(Integer userID) {
         return profileRepo.findById(userID).get();
     }
 
@@ -31,7 +30,7 @@ public class ProfileService {
         return new HashSet<>(profileRepo.findAll());
     }
 
-    public Set<Account> getAccounts(Integer userId){
+    public Set<Account> getAccounts(Integer userId) {
         return profileRepo.findById(userId).get().getAccounts();
     }
 
@@ -41,7 +40,7 @@ public class ProfileService {
 //        return profileRepo.save(originalProfile);
 //    }
 
-    public Boolean deleteUser(Integer userID){
+    public Boolean deleteUser(Integer userID) {
         profileRepo.deleteById(userID);
         return true;
     }

@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Set;
 
 @Repository
-public interface AccountRepo extends JpaRepository<Account,Integer> {
+public interface AccountRepo extends JpaRepository<Account, Integer> {
     Set<Account> findAllByProfileID(Integer profile_id);
+
     Integer countByProfileID(Integer profile_id);
 }

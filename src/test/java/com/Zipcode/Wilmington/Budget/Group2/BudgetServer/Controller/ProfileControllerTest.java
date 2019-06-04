@@ -22,7 +22,7 @@ import java.util.Set;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = BudgetServerApplication.class)
-@TestPropertySource(locations="classpath:application.properties")
+@TestPropertySource(locations = "classpath:application.properties")
 public class ProfileControllerTest {
 
     @MockBean
@@ -31,8 +31,8 @@ public class ProfileControllerTest {
     private ProfileController controller;
 
     @Before
-        public void setUp() {
-            this.controller = new ProfileController(service);
+    public void setUp() {
+        this.controller = new ProfileController(service);
     }
 
     @Test
@@ -150,7 +150,7 @@ public class ProfileControllerTest {
         BDDMockito
                 .given(service.deleteAllProfiles())
                 .willReturn(true);
-        
+
         // When
         ResponseEntity<Boolean> response = controller.deleteAllProfiles();
         HttpStatus actual = response.getStatusCode();

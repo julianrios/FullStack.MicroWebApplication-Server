@@ -2,7 +2,6 @@ package com.Zipcode.Wilmington.Budget.Group2.BudgetServer.Controller;
 
 import com.Zipcode.Wilmington.Budget.Group2.BudgetServer.BudgetServerApplication;
 import com.Zipcode.Wilmington.Budget.Group2.BudgetServer.Entity.Account;
-import com.Zipcode.Wilmington.Budget.Group2.BudgetServer.Entity.Profile;
 import com.Zipcode.Wilmington.Budget.Group2.BudgetServer.Service.AccountService;
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.xml.ws.Response;
 import java.util.HashSet;
 import java.util.Set;
 

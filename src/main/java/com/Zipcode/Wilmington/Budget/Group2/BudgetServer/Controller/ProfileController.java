@@ -22,18 +22,18 @@ public class ProfileController {
     }
 
     @PostMapping("/profiles")
-    public ResponseEntity<Profile> create(@RequestBody Profile profile){
+    public ResponseEntity<Profile> create(@RequestBody Profile profile) {
         return new ResponseEntity<>(profileService.create(profile), HttpStatus.CREATED);
     }
 
     @GetMapping("/profiles/{userId}")
-    public ResponseEntity<Profile> show(@PathVariable Integer userId){
+    public ResponseEntity<Profile> show(@PathVariable Integer userId) {
         return new ResponseEntity<>(profileService.getUser(userId), HttpStatus.OK);
     }
 
     @GetMapping("profiles/{userId}/accounts")
-    public  ResponseEntity<Set<Account>> getAccounts(@PathVariable Integer userId){
-        return new ResponseEntity<>(profileService.getAccounts(userId),HttpStatus.OK);
+    public ResponseEntity<Set<Account>> getAccounts(@PathVariable Integer userId) {
+        return new ResponseEntity<>(profileService.getAccounts(userId), HttpStatus.OK);
     }
 
     @GetMapping("/profiles/allProfiles")
@@ -47,7 +47,7 @@ public class ProfileController {
 //    }
 
     @DeleteMapping("/profiles/{userId}")
-    public ResponseEntity<Boolean> delete(@PathVariable Integer userId){
+    public ResponseEntity<Boolean> delete(@PathVariable Integer userId) {
         return new ResponseEntity<>(profileService.deleteUser(userId), HttpStatus.OK);
     }
 

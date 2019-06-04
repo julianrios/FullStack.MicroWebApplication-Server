@@ -10,7 +10,7 @@ public class NoSuchEntityExceptionTest {
     public void TestNoSuchEntityException() throws NoSuchEntityException {
         Object object = new Object();
 
-        if(!(object instanceof Account || object instanceof Profile)) {
+        if (!(object instanceof Account || object instanceof Profile)) {
             throw new NoSuchEntityException("thrown");
         }
     }
