@@ -18,7 +18,7 @@ Using the application PostMan you can run the tests for the profile with the lin
 - [Collection Link - Profiles](https://www.getpostman.com/collections/fbdd6d1290a82d3ca6c9)
 - [Collection Link - Accounts](https://www.getpostman.com/collections/301b06397805b594ac9c)
 
-![Walk Through](https://media.giphy.com/media/If1NJy3iw28xlUjYts/giphy.gif)
+![Walk Through](https://youtu.be/FQUu5NJ73DI)
 
 ### Tech Stack
 * **Frontend** - Angular
