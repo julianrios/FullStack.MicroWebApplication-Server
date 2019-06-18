@@ -95,9 +95,10 @@ public class AccountController {
     }
 
     /**
-     * @param accountId
-     * @param amount
-     * @return
+     * Deposits the specified amount and returns the updated account with a HTTP status code of 200(OK).
+     * @param accountId userId that is required for the URI to reach a specific account path.
+     * @param amount amount to deposit
+     * @return This returns an account and HTTP status OK.
      */
     @PutMapping("/accounts/deposit/{accountId}/{amount}")
     public ResponseEntity<Account> deposit(@PathVariable Integer accountId, @PathVariable Double amount) {
@@ -105,17 +106,36 @@ public class AccountController {
         return new ResponseEntity<>(accountService.getAccount(accountId), HttpStatus.OK);
     }
 
+
+    /**
+     * Transfers the specified amount from two different accounts owned by a user and returns the updated accounts with a HTTP status code of 200(OK).
+     * @param account1Id userId that is required for the URI to reach a specific account path.
+     * @param account2Id userId that is required for the URI to reach a specific account path.
+     * @param amount amount to transfer
+     * @return This returns an account and HTTP status OK.
+     */
     @PutMapping("/accounts/transfer/{account1Id}/{account2Id}/{amount}")
     public ResponseEntity<Account[]> transfer(@PathVariable Integer account1Id, @PathVariable Integer account2Id, @PathVariable Double amount) {
         return new ResponseEntity<>(accountService.transfer(account1Id, account2Id, amount), HttpStatus.OK);
 
     }
 
+    /**
+     * Deletes the specified accountId and returns a boolean with a HTTP status code of 200(OK).
+     * @param accountId userId that is required for the URI to reach a specific account path.
+     * @return This returns an account and HTTP status OK.
+     */
     @DeleteMapping("/accounts/{accountId}")
     public ResponseEntity<Boolean> delete(@PathVariable Integer accountId) {
         return new ResponseEntity<>(accountService.delete(accountId), HttpStatus.OK);
     }
 
+    /**
+     * For testing purposes only.
+     *
+     * Deletes the all accounts and returns a boolean with a HTTP status code of 200(OK).
+     * @return This returns an account and HTTP status OK.
+     */
     @DeleteMapping("/accounts/")
     public ResponseEntity<Boolean> deleteAllAccounts() {
         return new ResponseEntity<>(accountService.deleteAllAccounts(), HttpStatus.OK);
